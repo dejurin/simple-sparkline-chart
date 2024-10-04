@@ -4,21 +4,70 @@
   <head>
     <meta charset="UTF-8" />
     <title>Simple Sparkline Chart Example</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        padding: 5rem 10rem;
+      }
+    </style>
   </head>
   <body>
     <h1>Simple Sparkline Chart Example</h1>
-    <span
-    class="sparkline"
-    data-values="1.2006,1.184,1.1837,1.1837,1.1999,1.1999,1.1837,1.1837,1.1865,1.1872,1.1912,1.1912,1.1999,1.2006"
-    data-width="200"
-    data-height="40"
-    data-filled="true"
-    data-color-stroke="#8956ff"
-    data-stroke-width="3"
-    data-filled-opacity="0.25"
-    data-aria-label="Пример Sparkline диаграммы"
-  ></span>
-
+    <figure
+      class="sparkline"
+      data-values="1.2006,1.184,1.1837,1.1837,1.1999,1.1999,1.1837,1.1837,1.1865,1.1872,1.1912,1.1912,1.1999,1.2006"
+      data-width="200"
+      data-height="40"
+      data-filled="true"
+      data-color-stroke="#8956ff"
+      data-stroke-width="3"
+      data-tooltip="true"
+      data-filled-opacity="0.25"
+      data-aria-label="Sparkline Example Array"
+    ></figure>
+    <figure
+      class="sparkline"
+      data-values='[
+      {"timestamp":1693526400000,"value":0.9300},
+      {"timestamp":1693612800000,"value":0.9315},
+      {"timestamp":1693699200000,"value":0.9290},
+      {"timestamp":1693785600000,"value":0.9325},
+      {"timestamp":1693872000000,"value":0.9280},
+      {"timestamp":1693958400000,"value":0.9275},
+      {"timestamp":1694044800000,"value":0.9295},
+      {"timestamp":1694131200000,"value":0.9305},
+      {"timestamp":1694217600000,"value":0.9310},
+      {"timestamp":1694304000000,"value":0.9320},
+      {"timestamp":1694390400000,"value":0.9335},
+      {"timestamp":1694476800000,"value":0.9340},
+      {"timestamp":1694563200000,"value":0.9345},
+      {"timestamp":1694649600000,"value":0.9350},
+      {"timestamp":1694736000000,"value":0.9330},
+      {"timestamp":1694822400000,"value":0.9315},
+      {"timestamp":1694908800000,"value":0.9300},
+      {"timestamp":1694995200000,"value":0.9285},
+      {"timestamp":1695081600000,"value":0.9290},
+      {"timestamp":1695168000000,"value":0.9305},
+      {"timestamp":1695254400000,"value":0.9320},
+      {"timestamp":1695340800000,"value":0.9340},
+      {"timestamp":1695427200000,"value":0.9355},
+      {"timestamp":1695513600000,"value":0.9360},
+      {"timestamp":1695600000000,"value":0.9340},
+      {"timestamp":1695686400000,"value":0.9325},
+      {"timestamp":1695772800000,"value":0.9310},
+      {"timestamp":1695859200000,"value":0.9300},
+      {"timestamp":1695945600000,"value":0.9280},
+      {"timestamp":1696032000000,"value":0.9265}
+    ]'
+      data-width="200"
+      data-height="40"
+      data-filled="true"
+      data-color-stroke="#8956ff"
+      data-stroke-width="3"
+      data-tooltip="true"
+      data-filled-opacity="0.25"
+      data-aria-label="Sparkline Example Object"
+    ></figure>
     <!-- Include the UMD build -->
     <script type="module" src="src/index.umd.ts"></script>
 

@@ -1,6 +1,6 @@
 class SimpleSparkLineChart {
   constructor(selector: string) {
-    console.log('SimpleSparkLineChart');
+    console.log("SimpleSparkLineChart");
     const elements = document.querySelectorAll<HTMLElement>(selector);
     elements.forEach((element) => {
       this.createChart(element);
@@ -9,12 +9,45 @@ class SimpleSparkLineChart {
 
   private createChart(element: HTMLElement): void {
     const valuesAttr = element.dataset.values;
-    const values: number[] = valuesAttr
-      ? valuesAttr.split(",").map(parseFloat).filter(Number.isFinite)
-      : [];
+    let dataValues: number[] = [];
+    let dataObjects: { timestamp: number; value: number }[] = [];
+    let isObjectData = false;
 
-    if (values.length === 0) {
-      console.warn("Invalid or missing data-values for element:", element);
+    if (valuesAttr) {
+      try {
+        const parsedData = JSON.parse(valuesAttr);
+        if (Array.isArray(parsedData) && parsedData.length > 0) {
+          if (typeof parsedData[0] === "object" && parsedData[0] !== null) {
+            isObjectData = true;
+            dataObjects = parsedData.map((item) => ({
+              timestamp: item.timestamp,
+              value: item.value,
+            }));
+            dataValues = dataObjects.map((item) => item.value);
+          } else if (typeof parsedData[0] === "number") {
+            dataValues = parsedData.filter(Number.isFinite);
+          } else {
+            console.warn("Invalid data format in data-values:", element);
+            return;
+          }
+        } else {
+          console.warn("Empty or invalid array in data-values:", element);
+          return;
+        }
+      } catch (e) {
+        // If not JSON, try parsing as CSV
+        dataValues = valuesAttr
+          .split(",")
+          .map(parseFloat)
+          .filter(Number.isFinite);
+      }
+    } else {
+      console.warn("Missing data-values attribute for element:", element);
+      return;
+    }
+
+    if (dataValues.length === 0) {
+      console.warn("No valid data values for element:", element);
       return;
     }
 
@@ -33,9 +66,14 @@ class SimpleSparkLineChart {
         ? parseFloat(element.dataset.filledOpacity)
         : 0.2;
     const ariaLabel = element.dataset.ariaLabel || "Simple SparkLine Chart";
+    const showTooltip = element.dataset.tooltip !== "false";
+    const tooltipPosition = element.dataset.tooltipPosition || "above";
+    const locale = element.dataset.locale || navigator.language || "en-US";
 
     this.makeChart(
-      values,
+      dataValues,
+      dataObjects,
+      isObjectData,
       width,
       height,
       element,
@@ -44,12 +82,17 @@ class SimpleSparkLineChart {
       colorFilled,
       strokeWidth,
       filledOpacity,
-      ariaLabel
+      ariaLabel,
+      showTooltip,
+      tooltipPosition,
+      locale
     );
   }
 
   private makeChart(
     values: number[],
+    dataObjects: { timestamp: number; value: number }[],
+    isObjectData: boolean,
     width: number,
     height: number,
     parent: HTMLElement,
@@ -58,7 +101,10 @@ class SimpleSparkLineChart {
     colorFilled: string,
     strokeWidth: number,
     filledOpacity: number,
-    ariaLabel: string
+    ariaLabel: string,
+    showTooltip: boolean,
+    tooltipPosition: string,
+    locale: string
   ): void {
     const svgNS = "http://www.w3.org/2000/svg";
 
@@ -79,6 +125,7 @@ class SimpleSparkLineChart {
     svg.setAttribute("height", adjustedHeight.toString());
     svg.setAttribute("aria-label", ariaLabel);
     svg.setAttribute("viewBox", `0 0 ${adjustedWidth} ${adjustedHeight}`);
+    svg.setAttribute("overflow", "visible");
     svg.setAttribute("preserveAspectRatio", "none");
 
     const offset =
@@ -94,7 +141,13 @@ class SimpleSparkLineChart {
     }
 
     if (filled) {
-      const fillPathD = `${linePoints.map((p, i) => (i === 0 ? 'M' + p : 'L' + p)).join(' ')} L${(strokeWidth / 2 + (values.length - 1) * offset).toFixed(2)},${adjustedHeight.toFixed(2)} L${(strokeWidth / 2).toFixed(2)},${adjustedHeight.toFixed(2)} Z`;
+      const fillPathD = `${linePoints
+        .map((p, i) => (i === 0 ? "M" + p : "L" + p))
+        .join(" ")} L${(strokeWidth / 2 + (values.length - 1) * offset).toFixed(
+        2
+      )},${adjustedHeight.toFixed(2)} L${(strokeWidth / 2).toFixed(
+        2
+      )},${adjustedHeight.toFixed(2)} Z`;
 
       const fillElm = document.createElementNS(svgNS, "path");
       fillElm.setAttribute("d", fillPathD);
@@ -117,6 +170,34 @@ class SimpleSparkLineChart {
     pathElm.classList.add("sparkline-path");
     svg.appendChild(pathElm);
 
+    parent.appendChild(svg);
+
+    const tooltipContainer = document.createElement("div");
+    tooltipContainer.style.position = "relative";
+    tooltipContainer.style.width = adjustedWidth + "px";
+
+    const tooltip = document.createElement("div");
+    tooltip.style.position = "block";
+    tooltip.style.pointerEvents = "none";
+    tooltip.style.background = "#fff";
+    tooltip.style.border = "1px solid #ccc";
+    tooltip.style.color = "#444";
+    tooltip.style.fontSize = "small";
+    tooltip.style.whiteSpace = "nowrap";
+    tooltip.classList.add("sparkline-tooltip");
+
+    tooltip.textContent = ariaLabel;
+
+    tooltipContainer.appendChild(tooltip);
+
+    parent.innerHTML = "";
+    parent.appendChild(tooltipContainer);
+    tooltipContainer.insertBefore(svg, tooltip);
+
+    if (!showTooltip) {
+      return;
+    }
+
     const cursorLine = document.createElementNS(svgNS, "line");
     cursorLine.setAttribute("class", "sparkline-cursor-line");
     cursorLine.setAttribute("x1", "0");
@@ -138,25 +219,21 @@ class SimpleSparkLineChart {
     spot.style.display = "none";
     svg.appendChild(spot);
 
-    const tooltip = document.createElement("div");
-    tooltip.style.position = "absolute";
-    tooltip.style.pointerEvents = "none";
-    tooltip.style.background = "#fff";
-    tooltip.style.border = "1px solid #ccc";
-    tooltip.style.padding = "2px 4px";
-    tooltip.style.fontSize = "12px";
-    tooltip.style.display = "none";
-    tooltip.style.transform = "translate(-50%, -100%)";
-    tooltip.classList.add("sparkline-tooltip");
-    parent.style.position = "relative";
-    parent.appendChild(tooltip);
-
     const interactionLayer = document.createElementNS(svgNS, "rect");
     interactionLayer.setAttribute("width", adjustedWidth.toString());
     interactionLayer.setAttribute("height", adjustedHeight.toString());
     interactionLayer.setAttribute("fill", "transparent");
     interactionLayer.style.cursor = "pointer";
     svg.appendChild(interactionLayer);
+
+    const dateFormatter = new Intl.DateTimeFormat(locale, {
+      hour: "numeric",
+      minute: "numeric",
+      second: "numeric",
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+    });
 
     const handleMove = (event: MouseEvent | TouchEvent) => {
       event.preventDefault();
@@ -183,16 +260,19 @@ class SimpleSparkLineChart {
       cursorLine.setAttribute("x2", cx.toFixed(2));
       cursorLine.style.display = "block";
 
-      tooltip.style.left = `${cx}px`;
-      tooltip.style.top = `${cy - strokeWidth * 1.5 - 10}px`;
-      tooltip.textContent = values[clampedIndex].toString();
-      tooltip.style.display = "block";
+      if (isObjectData) {
+        const dataPoint = dataObjects[clampedIndex];
+        const date = dateFormatter.format(new Date(dataPoint.timestamp));
+        tooltip.innerHTML = `${dataPoint.value} (${date})`;
+      } else {
+        tooltip.textContent = values[clampedIndex].toString();
+      }
     };
 
     const handleOut = () => {
       spot.style.display = "none";
-      tooltip.style.display = "none";
       cursorLine.style.display = "none";
+      tooltip.textContent = ariaLabel;
     };
 
     interactionLayer.addEventListener("mousemove", handleMove);
@@ -200,8 +280,6 @@ class SimpleSparkLineChart {
     interactionLayer.addEventListener("mouseleave", handleOut);
     interactionLayer.addEventListener("touchend", handleOut);
     interactionLayer.addEventListener("touchcancel", handleOut);
-
-    parent.appendChild(svg);
   }
 }
 
