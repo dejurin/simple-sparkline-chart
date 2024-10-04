@@ -1,13 +1,13 @@
 📈 Simple SparkLine Chart
 
-	A lightweight, customizable, and easy-to-use SparkLine chart library written in TypeScript.
+A lightweight, customizable, and easy-to-use SparkLine chart library written in TypeScript.
 
 🚀 Features
 
-	•	🔥 Lightweight - Small footprint and blazing fast rendering.
-	•	🎨 Customizable - Control colors, sizes, tooltips, and more.
-	•	🎯 TypeScript Support - Fully typed for better development experience.
-	•	📦 Multiple Formats - Available as CommonJS, ESModule, and a global script for easy CDN usage.
+•	🔥 Lightweight - Small footprint and blazing fast rendering.
+•	🎨 Customizable - Control colors, sizes, tooltips, and more.
+•	🎯 TypeScript Support - Fully typed for better development experience.
+•	📦 Multiple Formats - Available as CommonJS, ESModule, and a global script for easy CDN usage.
 
 📦 Installation
 
