@@ -2,7 +2,7 @@
 /*
  *
  * Simple SparkLine Chart
- * @version 0.1.0
+ * @version 0.2.1
  * @license MIT
  * @author https://github.com/dejurin
  *
