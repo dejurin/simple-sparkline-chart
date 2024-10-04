@@ -21,6 +21,7 @@ A lightweight, customizable, and easy-to-use SparkLine chart library written in 
 
 ### Using CDN:
 
+```html
     <script src="https://www.unpkg.com/simple-sparkline-chart"></script>
 
 You can then use it via the global SimpleSparkLineChart:
@@ -28,21 +29,25 @@ You can then use it via the global SimpleSparkLineChart:
     <script>
       new SimpleSparkLineChart('.chart');
     </script>
+```
 
 ## 📚 Usage
 
 ### 1️⃣ Basic Example
 
+```html
     <div class="sparkline" data-values="1,2,3,4,5,6,7" data-width="200" data-height="40"></div>
 
     <script>
       new SimpleSparkLineChart('.sparkline');
     </script>
+```
 
 This will create a basic SparkLine chart using the specified data-values.
 
 ### 2️⃣ With Custom Options
 
+```html
     <div class="sparkline"
          data-values="0.5,1.5,2.3,3.8,2.9,3.4"
          data-width="300"
@@ -56,6 +61,7 @@ This will create a basic SparkLine chart using the specified data-values.
     <script>
       new SimpleSparkLineChart('.sparkline');
     </script>
+```
 
 ## 🔧 Data Attributes
 
@@ -92,6 +98,7 @@ You can customize the following:
 
 You can pass an array of objects with timestamps and values:
 
+```html
     <div class="sparkline"
          data-values='[
            {"timestamp":1693526400000,"value":0.93},
@@ -102,6 +109,7 @@ You can pass an array of objects with timestamps and values:
     <script>
       new SimpleSparkLineChart('.sparkline');
     </script>
+```
 
 🚀 Optimized for Performance
 
@@ -112,7 +120,9 @@ You can pass an array of objects with timestamps and values:
 
 For quick usage without installing npm dependencies:
 
+```html
     <script src="https://www.unpkg.com/simple-sparkline-chart"></script>
+```
 
 ## 🔧 Development
 
