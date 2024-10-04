@@ -42,7 +42,6 @@
       }
     }
   },
-  "sideEffects": false,
   "browserslist": [
     "> 0.2%",
     "last 2 versions",

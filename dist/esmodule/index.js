@@ -230,5 +230,7 @@
 var $efcab5d8b7cb3e5f$export$2e2bcd8739ae039 = $efcab5d8b7cb3e5f$var$SimpleSparkLineChart;
 
 
+var $28907e660f7296c2$export$2e2bcd8739ae039 = (0, $efcab5d8b7cb3e5f$export$2e2bcd8739ae039);
+
 
 //# sourceMappingURL=index.js.map
