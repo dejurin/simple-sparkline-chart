@@ -7,7 +7,7 @@
   "types": "./dist/types.d.ts",
   "scripts": {
     "start": "parcel src/index.html",
-    "build": "npm run format && npm run test && parcel build && npm run build:types",
+    "build": "npm run format && npm run test && parcel build --no-cache && npm run build:types",
     "format": "prettier --write .",
     "test": "jest",
     "build:types": "tsc --emitDeclarationOnly --declaration",

@@ -1,4 +1,4 @@
-import SimpleSparkLineChart from "../src/index";
+import SimpleSparkLineChart from "../index";
 
 // Helper to create a mock HTML element
 function createMockElement(values: string, options: any = {}): HTMLElement {
