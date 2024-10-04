@@ -1,0 +1,32 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Simple Sparkline Chart Example</title>
+  </head>
+  <body>
+    <h1>Simple Sparkline Chart Example</h1>
+    <span
+    class="sparkline"
+    data-values="1.184,1.1837,1.1837,1.1837,1.1837,1.1865,1.1872,1.1912,1.1912,1.1999,1.2006"
+    data-width="400"
+    data-height="100"
+    data-filled="true"
+    data-color-stroke="#8956ff"
+    data-stroke-width="3"
+    data-filled-opacity="0.25"
+    data-aria-label="Пример Sparkline диаграммы"
+  ></span>
+
+    <!-- Include the UMD build -->
+    <script type="module" src="src/index.umd.ts"></script>
+
+    <!-- Initialize the script -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        new SimpleSparkLineChart(".sparkline");
+      });
+    </script>
+  </body>
+</html>

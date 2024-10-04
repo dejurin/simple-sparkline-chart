@@ -1,0 +1,17 @@
+{
+  "name": "simple-sparkline-chart",
+  "version": "0.0.1",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel index.html"
+  },
+  "author": "",
+  "license": "MIT",
+  "description": "Simple SparkLine Chart",
+  "devDependencies": {
+    "typescript": "^5.6.2"
+  },
+  "dependencies": {
+    "parcel": "^2.12.0"
+  }
+}
