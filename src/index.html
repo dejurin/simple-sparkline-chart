@@ -11,17 +11,10 @@
         padding: 2rem;
         font-family: Arial, sans-serif;
       }
-      h1 {
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
-      }
-      h2 {
-        font-size: 1.25rem;
-        margin-top: 2rem;
-        margin-bottom: 0.5rem;
-      }
       .chart-container {
-        margin-bottom: 2rem;
+        border: 1px solid #ccc;
+        border-radius: .5rem;
+        padding: 1rem;
       }
       .chart-description {
         margin-top: 0.5rem;
@@ -34,8 +27,10 @@
   </head>
   <body>
     <h1 class="text-xl">Simple SparkLine Chart Examples</h1>
+    <hr class="my-8" />
     <!-- Example 1: Basic SparkLine with Array of Numbers -->
-    <div class="chart-container py-8">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+    <div class="chart-container">
       <h2>Example 1: Basic SparkLine with Array of Numbers</h2>
       <figure
         class="sparkline"
@@ -222,6 +217,7 @@
         A sparkline chart without fill and tooltip positioned at the bottom.
       </p>
     </div>
+  </div>
 
     <!-- Include the UMD build of SimpleSparkLineChart -->
     <script type="module" src="./global/index.ts"></script>
