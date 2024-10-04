@@ -1,0 +1,149 @@
+<!-- index.html -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Simple SparkLine Chart Examples</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>body {
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+h2 {
+  margin-top: 2rem;
+  margin-bottom: .5rem;
+  font-size: 1.25rem;
+}
+
+.chart-container {
+  margin-bottom: 2rem;
+}
+
+.chart-description {
+  color: #555;
+  margin-top: .5rem;
+}
+
+.sparkline-tooltip {
+  font-size: 12px;
+}
+</style>
+  </head>
+  <body>
+    <h1 class="text-xl">Simple SparkLine Chart Examples</h1>
+
+    <!-- Example 1: Basic SparkLine with Array of Numbers -->
+    <div class="chart-container py-8">
+      <h2>Example 1: Basic SparkLine with Array of Numbers</h2>
+      <figure class="sparkline" data-values="1, 3, 2, 5, 4, 6, 5, 7, 6, 8" data-width="200" data-height="50" data-color-stroke="#007bff" data-stroke-width="2" data-tooltip="true" data-aria-label="Basic SparkLine Chart"></figure>
+      <p class="chart-description">
+        A basic sparkline chart using an array of numbers.
+      </p>
+    </div>
+
+    <!-- Example 2: SparkLine with Filled Area -->
+    <div class="chart-container">
+      <h2>Example 2: SparkLine with Filled Area</h2>
+      <figure class="sparkline" data-values="5, 3, 4, 6, 7, 5, 6, 8, 7, 9" data-width="200" data-height="50" data-filled="true" data-color-stroke="#28a745" data-color-filled="#28a745" data-filled-opacity="0.3" data-stroke-width="2" data-tooltip="true" data-aria-label="Filled SparkLine Chart"></figure>
+      <p class="chart-description">
+        A sparkline chart with a filled area under the line.
+      </p>
+    </div>
+
+    <!-- Example 3: SparkLine with Array of Objects (Timestamps) -->
+    <div class="chart-container">
+      <h2>Example 3: SparkLine with Array of Objects (Timestamps)</h2>
+      <figure class="sparkline" data-values='[
+        {"timestamp":1693526400000,"value":0.9300},
+        {"timestamp":1693612800000,"value":0.9315},
+        {"timestamp":1693699200000,"value":0.9290},
+        {"timestamp":1693785600000,"value":0.9325},
+        {"timestamp":1693872000000,"value":0.9280},
+        {"timestamp":1693958400000,"value":0.9275},
+        {"timestamp":1694044800000,"value":0.9295},
+        {"timestamp":1694131200000,"value":0.9305},
+        {"timestamp":1694217600000,"value":0.9310},
+        {"timestamp":1694304000000,"value":0.9320}
+      ]' data-width="200" data-height="50" data-filled="true" data-color-stroke="#ffc107" data-color-filled="#ffc107" data-filled-opacity="0.3" data-stroke-width="2" data-tooltip="true" data-tooltip-position="bottom" data-aria-label="SparkLine Chart with Timestamps"></figure>
+      <p class="chart-description">
+        A sparkline chart using an array of objects with timestamps. Tooltip
+        shows date and value.
+      </p>
+    </div>
+
+    <!-- Example 4: SparkLine without Tooltip -->
+    <div class="chart-container">
+      <h2>Example 4: SparkLine without Tooltip</h2>
+      <figure class="sparkline" data-values="2, 4, 3, 5, 4, 6, 5, 7" data-width="200" data-height="50" data-color-stroke="#dc3545" data-stroke-width="2" data-tooltip="false" data-aria-label="SparkLine Chart without Tooltip"></figure>
+      <p class="chart-description">A sparkline chart with tooltip disabled.</p>
+    </div>
+
+    <!-- Example 5: SparkLine with Custom Stroke Width and Colors -->
+    <div class="chart-container">
+      <h2>Example 5: SparkLine with Custom Stroke Width and Colors</h2>
+      <figure class="sparkline" data-values="1, 4, 2, 5, 3, 6, 4, 7" data-width="200" data-height="50" data-color-stroke="#6f42c1" data-color-filled="#d6b8ff" data-filled="true" data-filled-opacity="0.5" data-stroke-width="4" data-tooltip="true" data-aria-label="Custom Styled SparkLine Chart"></figure>
+      <p class="chart-description">
+        A sparkline chart with custom stroke width and colors.
+      </p>
+    </div>
+
+    <!-- Example 6: SparkLine with Different Sizes -->
+    <div class="chart-container">
+      <h2>Example 6: SparkLine with Different Sizes</h2>
+      <figure class="sparkline" data-values="3, 5, 4, 6, 5, 7, 6, 8" data-width="300" data-height="100" data-color-stroke="#17a2b8" data-stroke-width="2" data-tooltip="true" data-aria-label="Large SparkLine Chart"></figure>
+      <p class="chart-description">
+        A larger sparkline chart with increased width and height.
+      </p>
+    </div>
+
+    <!-- Example 7: SparkLine with Locale Formatting -->
+    <div class="chart-container">
+      <h2>Example 7: SparkLine with Locale Formatting</h2>
+      <figure class="sparkline" data-values='[
+        {"timestamp":1693526400000,"value":0.9300},
+        {"timestamp":1693612800000,"value":0.9315},
+        {"timestamp":1693699200000,"value":0.9290},
+        {"timestamp":1693785600000,"value":0.9325},
+        {"timestamp":1693872000000,"value":0.9280}
+      ]' data-width="200" data-height="50" data-color-stroke="#fd7e14" data-stroke-width="2" data-tooltip="true" data-locale="fr-FR" data-aria-label="SparkLine Chart with French Locale"></figure>
+      <p class="chart-description">
+        A sparkline chart with date formatted in French locale.
+      </p>
+    </div>
+
+    <!-- Example 8: SparkLine with Data from CSV String -->
+    <div class="chart-container">
+      <h2>Example 8: SparkLine with Data from CSV String</h2>
+      <figure class="sparkline" data-values="1.2, 1.5, 1.3, 1.7, 1.4, 1.8, 1.6, 1.9" data-width="200" data-height="50" data-color-stroke="#20c997" data-stroke-width="2" data-tooltip="true" data-aria-label="SparkLine Chart from CSV Data"></figure>
+      <p class="chart-description">
+        A sparkline chart using data provided as a CSV string.
+      </p>
+    </div>
+
+    <!-- Example 9: SparkLine with No Fill and Custom Tooltip Position -->
+    <div class="chart-container">
+      <h2>Example 9: SparkLine with No Fill and Custom Tooltip Position</h2>
+      <figure class="sparkline" data-values="2, 5, 3, 6, 4, 7, 5, 8" data-width="200" data-height="50" data-color-stroke="#e83e8c" data-stroke-width="2" data-tooltip="true" data-tooltip-position="bottom" data-aria-label="SparkLine Chart with Tooltip at Bottom"></figure>
+      <p class="chart-description">
+        A sparkline chart without fill and tooltip positioned at the bottom.
+      </p>
+    </div>
+
+    <!-- Include the UMD build of SimpleSparkLineChart -->
+    <script src="/index.cba9d478.js" defer=""></script>
+
+    <!-- Initialize the script -->
+    <script>document.addEventListener("DOMContentLoaded", ()=>{
+    new SimpleSparkLineChart(".sparkline");
+});
+
+</script>
+  </body>
+</html>

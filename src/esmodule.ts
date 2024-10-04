@@ -1,4 +1,2 @@
-import SimpleSparkLineChart from "./simple-sparkline-chart";
-
+import SimpleSparkLineChart from "./index";
 export default SimpleSparkLineChart;
-export { SimpleSparkLineChart };

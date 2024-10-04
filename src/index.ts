@@ -5,7 +5,7 @@
  * @license MIT
  * @author https://github.com/dejurin
  *
- * https://github.com/ghorwin/simple-sparkline-chart
+ * https://github.com/dejurin/simple-sparkline
  *
  */
 
