@@ -113,7 +113,7 @@ You can pass an array of objects with timestamps and values:
   data-values='[
         {"timestamp":1693526400000,"value":0.93},
         {"timestamp":1693612800000,"value":0.9315}
-        ]'
+    ]'
   data-tooltip="true"
 ></div>
 
