@@ -22,15 +22,15 @@ A lightweight, customizable, and easy-to-use SparkLine chart library written in 
 ### Using CDN:
 
 ```html
-    <script src="https://www.unpkg.com/simple-sparkline-chart"></script>
+<script src="https://www.unpkg.com/simple-sparkline-chart"></script>
 ```
 
 You can then use it via the global SimpleSparkLineChart:
 
 ```html
-    <script>
-      new SimpleSparkLineChart('.chart');
-    </script>
+<script>
+  new SimpleSparkLineChart(".chart");
+</script>
 ```
 
 ## 📚 Usage
@@ -38,11 +38,16 @@ You can then use it via the global SimpleSparkLineChart:
 ### 1️⃣ Basic Example
 
 ```html
-    <div class="sparkline" data-values="1,2,3,4,5,6,7" data-width="200" data-height="40"></div>
+<div
+  class="sparkline"
+  data-values="1,2,3,4,5,6,7"
+  data-width="200"
+  data-height="40"
+></div>
 
-    <script>
-      new SimpleSparkLineChart('.sparkline');
-    </script>
+<script>
+  new SimpleSparkLineChart(".sparkline");
+</script>
 ```
 
 This will create a basic SparkLine chart using the specified data-values.
@@ -50,19 +55,21 @@ This will create a basic SparkLine chart using the specified data-values.
 ### 2️⃣ With Custom Options
 
 ```html
-    <div class="sparkline"
-         data-values="0.5,1.5,2.3,3.8,2.9,3.4"
-         data-width="300"
-         data-height="60"
-         data-color-stroke="#00f"
-         data-filled="true"
-         data-filled-opacity="0.3"
-         data-tooltip="true"
-         data-aria-label="My SparkLine Chart"></div>
+<div
+  class="sparkline"
+  data-values="0.5,1.5,2.3,3.8,2.9,3.4"
+  data-width="300"
+  data-height="60"
+  data-color-stroke="#00f"
+  data-filled="true"
+  data-filled-opacity="0.3"
+  data-tooltip="true"
+  data-aria-label="My SparkLine Chart"
+></div>
 
-    <script>
-      new SimpleSparkLineChart('.sparkline');
-    </script>
+<script>
+  new SimpleSparkLineChart(".sparkline");
+</script>
 ```
 
 ## 🔧 Data Attributes
@@ -101,16 +108,18 @@ You can customize the following:
 You can pass an array of objects with timestamps and values:
 
 ```html
-    <div class="sparkline"
-         data-values='[
-           {"timestamp":1693526400000,"value":0.93},
-           {"timestamp":1693612800000,"value":0.9315}
-         ]'
-         data-tooltip="true"></div>
+<div
+  class="sparkline"
+  data-values='[
+        {"timestamp":1693526400000,"value":0.93},
+        {"timestamp":1693612800000,"value":0.9315}
+        ]'
+  data-tooltip="true"
+></div>
 
-    <script>
-      new SimpleSparkLineChart('.sparkline');
-    </script>
+<script>
+  new SimpleSparkLineChart(".sparkline");
+</script>
 ```
 
 🚀 Optimized for Performance
@@ -123,7 +132,7 @@ You can pass an array of objects with timestamps and values:
 For quick usage without installing npm dependencies:
 
 ```html
-    <script src="https://www.unpkg.com/simple-sparkline-chart"></script>
+<script src="https://www.unpkg.com/simple-sparkline-chart"></script>
 ```
 
 ## 🔧 Development
@@ -153,9 +162,5 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 💬 Feedback and Contributions
 
 Feel free to open an issue if you find a bug or have a feature request. Pull requests are welcome! 🙌
-
-🛠️ Maintainers
-
-- dejurin
 
 Hope you enjoy using Simple SparkLine Chart! 🚀✨
