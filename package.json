@@ -7,7 +7,7 @@
   "types": "./dist/types.d.ts",
   "scripts": {
     "start": "parcel src/index.html",
-    "build": "parcel build --no-cache --log-level verbose",
+    "build": "npm run format && npm run test && parcel build",
     "format": "prettier --write .",
     "test": "jest"
   },
