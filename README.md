@@ -23,9 +23,11 @@ A lightweight, customizable, and easy-to-use SparkLine chart library written in 
 
 ```html
     <script src="https://www.unpkg.com/simple-sparkline-chart"></script>
+```
 
 You can then use it via the global SimpleSparkLineChart:
 
+```html
     <script>
       new SimpleSparkLineChart('.chart');
     </script>
