@@ -13,7 +13,7 @@ A lightweight, customizable, and easy-to-use SparkLine chart library written in 
 
 ### Using npm:
 
-npm install simple-sparkline-chart
+    npm install simple-sparkline-chart
 
 ### Using CDN:
 
