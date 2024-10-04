@@ -17,7 +17,7 @@ A lightweight, customizable, and easy-to-use SparkLine chart library written in 
 
 ### Using CDN:
 
-    <script src="https://cdn.jsdelivr.net/gh/dejurin/simple-sparkline-chart@main/dist/global/index.js"></script>
+    <script src="https://www.unpkg.com/simple-sparkline-chart"></script>
 
 You can then use it via the global SimpleSparkLineChart:
 
@@ -108,7 +108,7 @@ You can pass an array of objects with timestamps and values:
 
 For quick usage without installing npm dependencies:
 
-    <script src="https://cdn.jsdelivr.net/gh/dejurin/simple-sparkline-chart@main/dist/global/index.js"></script>
+    <script src="https://www.unpkg.com/simple-sparkline-chart"></script>
 
 ## 🔧 Development
 

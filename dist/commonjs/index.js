@@ -2,7 +2,7 @@ var t,e,i=(t=(t,e)=>{var i=
 /*
  *
  * Simple SparkLine Chart
- * @version 0.2.1
+ * @version 0.2.2
  * @license MIT
  * @author https://github.com/dejurin
  *
