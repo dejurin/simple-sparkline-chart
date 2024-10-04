@@ -1,0 +1,12 @@
+{
+  "extends": "@parcel/config-default",
+  "optimizers": {
+    "*.js": [
+      "@parcel/optimizer-esbuild",
+      "@parcel/optimizer-terser"
+    ]
+  },
+  "validators": {
+    "*.{ts,tsx}": ["@parcel/validator-typescript"]
+  }
+}

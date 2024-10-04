@@ -1,15 +1,16 @@
 /*
+ *
  * Simple SparkLine Chart
  * @version 0.1.0
- * @author YURII
+ * @license MIT
+ * @author https://github.com/dejurin
+ *
  * https://github.com/ghorwin/simple-sparkline-chart
- * 
- * MIT License
+ *
  */
 
 class SimpleSparkLineChart {
   constructor(selector: string) {
-    console.log("SimpleSparkLineChart");
     const elements = document.querySelectorAll<HTMLElement>(selector);
     elements.forEach((element) => {
       this.createChart(element);
@@ -97,7 +98,7 @@ class SimpleSparkLineChart {
       ariaLabel,
       showTooltip,
       tooltipPosition,
-      locale
+      locale,
     );
   }
 
@@ -116,7 +117,7 @@ class SimpleSparkLineChart {
     ariaLabel: string,
     showTooltip: boolean,
     tooltipPosition: string,
-    locale: string
+    locale: string,
   ): void {
     const svgNS = "http://www.w3.org/2000/svg";
 
@@ -158,7 +159,7 @@ class SimpleSparkLineChart {
       const fillPathD = `${linePoints
         .map((p, i) => (i === 0 ? "M" + p : "L" + p))
         .join(" ")} L${adjustedWidth.toFixed(2)},${adjustedHeight.toFixed(
-        2
+        2,
       )} L0,${adjustedHeight.toFixed(2)} Z`;
 
       const fillElm = document.createElementNS(svgNS, "path");

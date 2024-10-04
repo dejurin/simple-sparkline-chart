@@ -3,14 +3,16 @@
     "target": "ES5",
     "module": "ESNext",
     "strict": true,
-    "outDir": "./dist",
-    "sourceMap": false,
-    "removeComments": true,
-    "declaration": false,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": false,
     "moduleResolution": "node",
-    "lib": ["DOM", "ES6"]
+    "sourceMap": true,
+    "outDir": "./dist",
+    "declaration": true,
+    "removeComments": true,
+    "lib": ["DOM", "ESNext"]
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
 }
