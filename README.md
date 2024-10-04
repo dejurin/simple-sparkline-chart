@@ -2,7 +2,7 @@
 
 A lightweight, customizable, and easy-to-use SparkLine chart library written in TypeScript.
 
-[DEMO 👀](https://codepen.io/dejurin/pen/QWeELog)
+👀 [DEMO](https://codepen.io/dejurin/pen/QWeELog)
 
 <img src="./assets/sparkline.png" alt="📈 Simple SparkLine Chart" loading="lazy" />
 
