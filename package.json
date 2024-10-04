@@ -7,9 +7,11 @@
   "types": "./dist/types.d.ts",
   "scripts": {
     "start": "parcel src/index.html",
-    "build": "npm run format && npm run test && parcel build",
+    "build": "npm run format && npm run test && parcel build && npm run build:types",
     "format": "prettier --write .",
-    "test": "jest"
+    "test": "jest",
+    "build:types": "tsc --emitDeclarationOnly --declaration",
+    "test:watch": "jest --watch"
   },
   "targets": {
     "esmodule": {
