@@ -117,7 +117,7 @@ class SimpleSparkLineChart {
 
     const c = (x: number): number => {
       const s = (adjustedHeight - strokeWidth) / range;
-      return strokeWidth / 2 + (adjustedHeight - strokeWidth) - s * (x - min);
+      return adjustedHeight - strokeWidth / 2 - s * (x - min);
     };
 
     const svg = document.createElementNS(svgNS, "svg");
@@ -128,14 +128,11 @@ class SimpleSparkLineChart {
     svg.setAttribute("overflow", "visible");
     svg.setAttribute("preserveAspectRatio", "none");
 
-    const offset =
-      values.length > 1
-        ? (adjustedWidth - strokeWidth) / (values.length - 1)
-        : 0;
+    const offset = values.length > 1 ? adjustedWidth / (values.length - 1) : 0;
 
     const linePoints: string[] = [];
     for (let i = 0; i < values.length; i++) {
-      const x = (strokeWidth / 2 + i * offset).toFixed(2);
+      const x = (i * offset).toFixed(2);
       const y = c(values[i]).toFixed(2);
       linePoints.push(`${x},${y}`);
     }
@@ -143,11 +140,9 @@ class SimpleSparkLineChart {
     if (filled) {
       const fillPathD = `${linePoints
         .map((p, i) => (i === 0 ? "M" + p : "L" + p))
-        .join(" ")} L${(strokeWidth / 2 + (values.length - 1) * offset).toFixed(
+        .join(" ")} L${adjustedWidth.toFixed(2)},${adjustedHeight.toFixed(
         2
-      )},${adjustedHeight.toFixed(2)} L${(strokeWidth / 2).toFixed(
-        2
-      )},${adjustedHeight.toFixed(2)} Z`;
+      )} L0,${adjustedHeight.toFixed(2)} Z`;
 
       const fillElm = document.createElementNS(svgNS, "path");
       fillElm.setAttribute("d", fillPathD);
@@ -165,7 +160,7 @@ class SimpleSparkLineChart {
     pathElm.setAttribute("fill", "none");
     pathElm.setAttribute("stroke", colorStroke);
     pathElm.setAttribute("stroke-width", strokeWidth.toString());
-    pathElm.setAttribute("stroke-linecap", "round");
+    pathElm.setAttribute("stroke-linecap", "butt");
     pathElm.setAttribute("stroke-linejoin", "round");
     pathElm.classList.add("sparkline-path");
     svg.appendChild(pathElm);
