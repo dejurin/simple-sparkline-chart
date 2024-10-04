@@ -7,23 +7,19 @@
  *
  * https://github.com/dejurin/simple-sparkline
  *
- */
-
-class SimpleSparkLineChart {
-  constructor(selector: string) {
-    const elements = document.querySelectorAll<HTMLElement>(selector);
+ */ class $efcab5d8b7cb3e5f$var$SimpleSparkLineChart {
+  constructor(selector) {
+    const elements = document.querySelectorAll(selector);
     elements.forEach((element) => {
       this.createChart(element);
     });
   }
-
-  private createChart(element: HTMLElement): void {
+  createChart(element) {
     const valuesAttr = element.dataset.values;
-    let dataValues: number[] = [];
-    let dataObjects: { timestamp: number; value: number }[] = [];
+    let dataValues = [];
+    let dataObjects = [];
     let isObjectData = false;
-
-    if (valuesAttr) {
+    if (valuesAttr)
       try {
         const parsedData = JSON.parse(valuesAttr);
         if (Array.isArray(parsedData) && parsedData.length > 0) {
@@ -35,10 +31,10 @@ class SimpleSparkLineChart {
               value: item.value,
             }));
             dataValues = dataObjects.map((item) => item.value);
-          } else if (typeof parsedData[0] === "number") {
+          } else if (typeof parsedData[0] === "number")
             // Data is an array of numbers
             dataValues = parsedData.filter(Number.isFinite);
-          } else {
+          else {
             console.warn("Invalid data format in data-values:", element);
             return;
           }
@@ -53,16 +49,14 @@ class SimpleSparkLineChart {
           .map(parseFloat)
           .filter(Number.isFinite);
       }
-    } else {
+    else {
       console.warn("Missing data-values attribute for element:", element);
       return;
     }
-
     if (dataValues.length === 0) {
       console.warn("No valid data values for element:", element);
       return;
     }
-
     // Read optional attributes with default values
     const width = element.dataset.width ? parseInt(element.dataset.width) : 200;
     const height = element.dataset.height
@@ -82,7 +76,6 @@ class SimpleSparkLineChart {
     const showTooltip = element.dataset.tooltip !== "false";
     const tooltipPosition = element.dataset.tooltipPosition || "above";
     const locale = element.dataset.locale || navigator.language || "en-US";
-
     this.makeChart(
       dataValues,
       dataObjects,
@@ -101,39 +94,34 @@ class SimpleSparkLineChart {
       locale,
     );
   }
-
-  private makeChart(
-    values: number[],
-    dataObjects: { timestamp: number; value: number }[],
-    isObjectData: boolean,
-    width: number,
-    height: number,
-    parent: HTMLElement,
-    filled: boolean,
-    colorStroke: string,
-    colorFilled: string,
-    strokeWidth: number,
-    filledOpacity: number,
-    ariaLabel: string,
-    showTooltip: boolean,
-    tooltipPosition: string,
-    locale: string,
-  ): void {
+  makeChart(
+    values,
+    dataObjects,
+    isObjectData,
+    width,
+    height,
+    parent,
+    filled,
+    colorStroke,
+    colorFilled,
+    strokeWidth,
+    filledOpacity,
+    ariaLabel,
+    showTooltip,
+    tooltipPosition,
+    locale,
+  ) {
     const svgNS = "http://www.w3.org/2000/svg";
-
     const adjustedWidth = width;
     const adjustedHeight = height;
-
     const max = Math.max(...values);
     const min = Math.min(...values);
     const range = max - min || 1;
-
     // Function to calculate Y coordinate
-    const c = (x: number): number => {
+    const c = (x) => {
       const s = (adjustedHeight - strokeWidth) / range;
       return adjustedHeight - strokeWidth / 2 - s * (x - min);
     };
-
     // Create SVG element
     const svg = document.createElementNS(svgNS, "svg");
     svg.setAttribute("role", "img");
@@ -143,25 +131,17 @@ class SimpleSparkLineChart {
     svg.setAttribute("viewBox", `0 0 ${adjustedWidth} ${adjustedHeight}`);
     svg.setAttribute("overflow", "visible");
     svg.setAttribute("preserveAspectRatio", "none");
-
     const offset = values.length > 1 ? adjustedWidth / (values.length - 1) : 0;
-
     // Generate points for the line
-    const linePoints: string[] = [];
+    const linePoints = [];
     for (let i = 0; i < values.length; i++) {
       const x = (i * offset).toFixed(2);
       const y = c(values[i]).toFixed(2);
       linePoints.push(`${x},${y}`);
     }
-
     // Create filled area if 'filled' is true
     if (filled) {
-      const fillPathD = `${linePoints
-        .map((p, i) => (i === 0 ? "M" + p : "L" + p))
-        .join(" ")} L${adjustedWidth.toFixed(2)},${adjustedHeight.toFixed(
-        2,
-      )} L0,${adjustedHeight.toFixed(2)} Z`;
-
+      const fillPathD = `${linePoints.map((p, i) => (i === 0 ? "M" + p : "L" + p)).join(" ")} L${adjustedWidth.toFixed(2)},${adjustedHeight.toFixed(2)} L0,${adjustedHeight.toFixed(2)} Z`;
       const fillElm = document.createElementNS(svgNS, "path");
       fillElm.setAttribute("d", fillPathD);
       fillElm.setAttribute("stroke", "none");
@@ -170,10 +150,8 @@ class SimpleSparkLineChart {
       fillElm.classList.add("sparkline-fill");
       svg.appendChild(fillElm);
     }
-
     // Create the line path
     const linePathD = `M${linePoints.join(" L")}`;
-
     const pathElm = document.createElementNS(svgNS, "path");
     pathElm.setAttribute("d", linePathD);
     pathElm.setAttribute("fill", "none");
@@ -183,16 +161,13 @@ class SimpleSparkLineChart {
     pathElm.setAttribute("stroke-linejoin", "round");
     pathElm.classList.add("sparkline-path");
     svg.appendChild(pathElm);
-
     // Create container for SVG and Tooltip
     const container = document.createElement("div");
     container.style.position = "relative";
     container.style.display = "inline-block";
     container.style.width = adjustedWidth + "px";
-
     // Append SVG to container
     container.appendChild(svg);
-
     // Create Tooltip
     const tooltip = document.createElement("div");
     tooltip.style.position = "absolute";
@@ -206,22 +181,14 @@ class SimpleSparkLineChart {
     tooltip.style.borderRadius = "4px";
     tooltip.classList.add("sparkline-tooltip");
     tooltip.style.display = "none";
-
     // Position the tooltip
-    if (tooltipPosition === "bottom") {
-      tooltip.style.top = adjustedHeight + "px";
-    } else {
-      tooltip.style.bottom = adjustedHeight + "px";
-    }
-
-    if (showTooltip) {
-      container.appendChild(tooltip);
-    }
-
+    if (tooltipPosition === "bottom") tooltip.style.top = adjustedHeight + "px";
+    else tooltip.style.bottom = adjustedHeight + "px";
+    container.appendChild(tooltip);
     // Clear parent element and append container
     parent.innerHTML = "";
     parent.appendChild(container);
-
+    if (!showTooltip) return;
     // Create cursor line
     const cursorLine = document.createElementNS(svgNS, "line");
     cursorLine.setAttribute("class", "sparkline-cursor-line");
@@ -234,7 +201,6 @@ class SimpleSparkLineChart {
     cursorLine.setAttribute("stroke-dasharray", "4");
     cursorLine.style.display = "none";
     svg.appendChild(cursorLine);
-
     // Create spot circle
     const spot = document.createElementNS(svgNS, "circle");
     spot.setAttribute("class", "sparkline-spot");
@@ -244,7 +210,6 @@ class SimpleSparkLineChart {
     spot.setAttribute("stroke-width", "1");
     spot.style.display = "none";
     svg.appendChild(spot);
-
     // Create interaction layer
     const interactionLayer = document.createElementNS(svgNS, "rect");
     interactionLayer.setAttribute("width", adjustedWidth.toString());
@@ -252,7 +217,6 @@ class SimpleSparkLineChart {
     interactionLayer.setAttribute("fill", "transparent");
     interactionLayer.style.cursor = "pointer";
     svg.appendChild(interactionLayer);
-
     // Create date formatter
     const dateFormatter = new Intl.DateTimeFormat(locale, {
       hour: "numeric",
@@ -262,62 +226,47 @@ class SimpleSparkLineChart {
       month: "short",
       year: "numeric",
     });
-
     // Event handlers
-    const handleMove = (event: MouseEvent | TouchEvent) => {
+    const handleMove = (event) => {
       event.preventDefault();
       const rect = svg.getBoundingClientRect();
       let clientX;
-      if (event instanceof MouseEvent) {
-        clientX = event.clientX;
-      } else if (event.touches && event.touches.length > 0) {
+      if (event instanceof MouseEvent) clientX = event.clientX;
+      else if (event.touches && event.touches.length > 0)
         clientX = event.touches[0].clientX;
-      } else {
-        return;
-      }
+      else return;
       const x = clientX - rect.left;
       const index = Math.round(x / offset);
       const clampedIndex = Math.max(0, Math.min(values.length - 1, index));
       const cx = clampedIndex * offset;
       const cy = c(values[clampedIndex]);
-
       spot.setAttribute("cx", cx.toFixed(2));
       spot.setAttribute("cy", cy.toFixed(2));
       spot.style.display = "block";
-
       cursorLine.setAttribute("x1", cx.toFixed(2));
       cursorLine.setAttribute("x2", cx.toFixed(2));
       cursorLine.style.display = "block";
-
       // Update tooltip content
       if (isObjectData) {
         const dataPoint = dataObjects[clampedIndex];
         const date = dateFormatter.format(new Date(dataPoint.timestamp));
         tooltip.innerHTML = `${dataPoint.value} (${date})`;
-      } else {
-        tooltip.textContent = values[clampedIndex].toString();
-      }
-
+      } else tooltip.textContent = values[clampedIndex].toString();
       // Position tooltip horizontally
       // Ensure tooltip is displayed to get correct dimensions
       tooltip.style.display = "block";
       const tooltipRect = tooltip.getBoundingClientRect();
       let tooltipX = cx - tooltipRect.width / 2;
-      if (tooltipX < 0) {
-        tooltipX = 0;
-      } else if (tooltipX + tooltipRect.width > adjustedWidth) {
+      if (tooltipX < 0) tooltipX = 0;
+      else if (tooltipX + tooltipRect.width > adjustedWidth)
         tooltipX = adjustedWidth - tooltipRect.width;
-      }
       tooltip.style.left = tooltipX + "px";
     };
-
     const handleOut = () => {
       spot.style.display = "none";
       cursorLine.style.display = "none";
-
       tooltip.style.display = "none";
     };
-
     interactionLayer.addEventListener("mousemove", handleMove);
     interactionLayer.addEventListener("touchmove", handleMove);
     interactionLayer.addEventListener("mouseleave", handleOut);
@@ -325,5 +274,7 @@ class SimpleSparkLineChart {
     interactionLayer.addEventListener("touchcancel", handleOut);
   }
 }
+var $efcab5d8b7cb3e5f$export$2e2bcd8739ae039 =
+  $efcab5d8b7cb3e5f$var$SimpleSparkLineChart;
 
-export default SimpleSparkLineChart;
+//# sourceMappingURL=index.js.map

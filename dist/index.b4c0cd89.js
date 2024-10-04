@@ -142,14 +142,14 @@
       this[globalName] = mainExports;
     }
   }
-})({"059BN":[function(require,module,exports) {
+})({"iAtEK":[function(require,module,exports) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "d6ea1d42532a7575";
 var HMR_USE_SSE = false;
-module.bundle.HMR_BUNDLE_ID = "b141fde1cba9d478";
+module.bundle.HMR_BUNDLE_ID = "f7b66aecb4c0cd89";
 "use strict";
 /* global HMR_HOST, HMR_PORT, HMR_ENV_HASH, HMR_SECURE, HMR_USE_SSE, chrome, browser, __parcel__import__, __parcel__importScripts__, ServiceWorkerGlobalScope */ /*::
 import type {
@@ -583,13 +583,13 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
     });
 }
 
-},{}],"kHtAz":[function(require,module,exports) {
+},{}],"dPhX3":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-var _index = require("./index");
+var _index = require("../index");
 var _indexDefault = parcelHelpers.interopDefault(_index);
 if (typeof window !== "undefined") window.SimpleSparkLineChart = (0, _indexDefault.default);
 
-},{"./index":"h7u1C","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"h7u1C":[function(require,module,exports) {
+},{"../index":"h7u1C","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"h7u1C":[function(require,module,exports) {
 /*
  *
  * Simple SparkLine Chart
@@ -597,7 +597,7 @@ if (typeof window !== "undefined") window.SimpleSparkLineChart = (0, _indexDefau
  * @license MIT
  * @author https://github.com/dejurin
  *
- * https://github.com/ghorwin/simple-sparkline-chart
+ * https://github.com/dejurin/simple-sparkline
  *
  */ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
@@ -734,11 +734,10 @@ class SimpleSparkLineChart {
         // Position the tooltip
         if (tooltipPosition === "bottom") tooltip.style.top = adjustedHeight + "px";
         else tooltip.style.bottom = adjustedHeight + "px";
-        container.appendChild(tooltip);
+        if (showTooltip) container.appendChild(tooltip);
         // Clear parent element and append container
         parent.innerHTML = "";
         parent.appendChild(container);
-        if (!showTooltip) return;
         // Create cursor line
         const cursorLine = document.createElementNS(svgNS, "line");
         cursorLine.setAttribute("class", "sparkline-cursor-line");
@@ -854,6 +853,6 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}]},["059BN","kHtAz"], "kHtAz", "parcelRequire7179")
+},{}]},["iAtEK","dPhX3"], "dPhX3", "parcelRequire7179")
 
-//# sourceMappingURL=index.cba9d478.js.map
+//# sourceMappingURL=index.b4c0cd89.js.map

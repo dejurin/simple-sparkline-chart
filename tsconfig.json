@@ -12,7 +12,7 @@
     "declaration": true,
     "removeComments": true,
     "lib": ["DOM", "ESNext"],
-    "types": ["node"],
+    "types": ["node", "jest", "jest-environment-jsdom"]
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]
