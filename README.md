@@ -2,6 +2,8 @@
 
 A lightweight, customizable, and easy-to-use SparkLine chart library written in TypeScript.
 
+<img src="./assets/sparkline.png" alt="📈 Simple SparkLine Chart" loading="lazy" width="400" />
+
 🚀 Features
 
 - 🔥 Lightweight - Small footprint and blazing fast rendering.
