@@ -61,9 +61,8 @@ This will create a basic SparkLine chart using the specified data-values.
   data-width="300"
   data-height="60"
   data-color-stroke="#00f"
-  data-filled="true"
-  data-filled-opacity="0.3"
-  data-tooltip="true"
+  data-filled="0.3"
+  data-tooltip="top"
   data-aria-label="My SparkLine Chart"
 ></div>
 
@@ -114,7 +113,7 @@ You can pass an array of objects with timestamps and values:
         {"timestamp":1693526400000,"value":0.93},
         {"timestamp":1693612800000,"value":0.9315}
     ]'
-  data-tooltip="true"
+  data-tooltip="top"
 ></div>
 
 <script>

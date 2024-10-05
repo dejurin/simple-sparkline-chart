@@ -140,7 +140,11 @@ class SimpleSparkLineChart {
     );
 
     if (filled) {
-      const fillPathD = `${linePoints.map((p, i) => (i === 0 ? "M" + p : "L" + p)).join(" ")} L${adjustedWidth.toFixed(2)},${adjustedHeight.toFixed(2)} L0,${adjustedHeight.toFixed(2)} Z`;
+      const fillPathD = `${linePoints
+        .map((p, i) => (i === 0 ? "M" + p : "L" + p))
+        .join(" ")} L${adjustedWidth.toFixed(2)},${adjustedHeight.toFixed(
+        2,
+      )} L0,${adjustedHeight.toFixed(2)} Z`;
 
       const fillElm = document.createElementNS(svgNS, "path");
       fillElm.setAttribute("d", fillPathD);
@@ -252,7 +256,13 @@ class SimpleSparkLineChart {
 
         tooltip.style.display = "block";
         const tooltipRect = tooltip.getBoundingClientRect();
-        tooltip.style.left = `${Math.max(0, Math.min(adjustedWidth - tooltipRect.width, cx - tooltipRect.width / 2))}px`;
+        tooltip.style.left = `${Math.max(
+          0,
+          Math.min(
+            adjustedWidth - tooltipRect.width,
+            cx - tooltipRect.width / 2,
+          ),
+        )}px`;
       };
 
       const handleOut = () => {
