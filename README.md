@@ -3,6 +3,8 @@
 A lightweight, customizable, and easy-to-use SparkLine chart library written in TypeScript.
 
 [DEMO](https://codepen.io/dejurin/pen/QWeELog) 👀
+[NPMJS](https://www.npmjs.com/package/simple-sparkline-chart) 📦
+[UNPKG](https://www.unpkg.com/simple-sparkline-chart) </>
 
 <img src="./assets/sparkline.png" alt="📈 Simple SparkLine Chart" loading="lazy" />
 
