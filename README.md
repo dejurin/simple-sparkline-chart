@@ -14,6 +14,8 @@ A lightweight, customizable, and easy-to-use SparkLine chart library written in 
 
 [UNPKG](https://www.unpkg.com/simple-sparkline-chart) </>
 
+[GITHUB](https://github.com/dejurin/simple-sparkline-chart) 🔮
+
 <img src="./assets/sparkline.png" alt="📈 Simple SparkLine Chart" loading="lazy" />
 
 🚀 Features
