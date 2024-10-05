@@ -74,16 +74,16 @@ This will create a basic SparkLine chart using the specified data-values.
 
 ## 🔧 Data Attributes
 
-Attribute Type Default Description
-data-values string null A comma-separated list of values or JSON data.
-data-width number 200 The width of the chart.
-data-height number 40 The height of the chart.
-data-color-stroke string #8956ff The color of the line (stroke).
-data-filled boolean false Whether to fill the area under the line.
-data-filled-opacity number 0.2 Opacity of the fill.
-data-tooltip boolean true Whether to show tooltips on hover.
-data-tooltip-position string above or below Position of the tooltip relative to the chart.
-data-aria-label string null Accessible label for the chart.
+| Attribute             | Type     | Default                   | Description                                                                                 |
+|-----------------------|----------|---------------------------|---------------------------------------------------------------------------------------------|
+| `data-values`         | string   | `null` **(Required)**      | A comma-separated list of values or JSON data to plot.                                       |
+| `data-width`          | number   | `200`                     | The width of the chart in pixels.                                                            |
+| `data-height`         | number   | Proportional to width      | The height of the chart in pixels. Automatically calculated based on width, maintaining a proportional aspect ratio. |
+| `data-color-stroke`   | string   | `#8956ff`                 | The color of the chart line (stroke).                                                        |
+| `data-filled`         | number   | (none)                    | Defines the opacity of the fill area under the line if set. If not provided, no fill is displayed. |
+| `data-tooltip`        | string   | `top`                     | Tooltip position: "top" or "bottom". Tooltip is enabled if this attribute is set.            |
+| `data-aria-label`     | string   | `Simple SparkLine Chart`   | Accessible label for the chart.                                                              |
+| `data-locale`         | string   | User's locale              | The locale used for formatting dates in tooltips (if using timestamp data).                  |
 
 ## 🧑‍💻 API
 

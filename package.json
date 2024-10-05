@@ -1,6 +1,6 @@
 {
   "name": "simple-sparkline-chart",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "source": "src/index.ts",
   "main": "./dist/commonjs/index.js",
   "module": "./dist/esmodule/index.js",

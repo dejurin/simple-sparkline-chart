@@ -41,12 +41,11 @@
           <h2>Example 1: Basic SparkLine with Array of Numbers</h2>
           <figure
             class="sparkline"
-            data-values="1, 3, 2, 5, 4, 6, 5, 7, 6, 8"
-            data-width="200"
-            data-height="50"
+            data-values="1, 3, 2, 5, 4, 3, 5, 2, 3, 7"
             data-color-stroke="#007bff"
-            data-stroke-width="2"
-            data-tooltip="true"
+            data-stroke-width="1"
+            data-tooltip="top"
+            data-opacity="0.5"
             data-aria-label="Basic SparkLine Chart"
           ></figure>
           <p class="chart-description">
@@ -56,25 +55,23 @@
 
         <!-- Example 2: SparkLine with Filled Area -->
         <div class="chart-container">
-          <h2>Example 2: SparkLine with Filled Area</h2>
+          <h2>Example 2: SparkLine with Filled Area without opacity</h2>
           <figure
             class="sparkline"
             data-values="5, 3, 4, 6, 7, 5, 6, 8, 7, 9"
             data-width="200"
             data-height="50"
-            data-filled="true"
+            data-filled="1"
             data-color-stroke="#28a745"
             data-color-filled="#28a745"
-            data-filled-opacity="0.3"
             data-stroke-width="2"
-            data-tooltip="true"
+            data-tooltip="top"
             data-aria-label="Filled SparkLine Chart"
           ></figure>
           <p class="chart-description">
             A sparkline chart with a filled area under the line.
           </p>
         </div>
-
         <!-- Example 3: SparkLine with Array of Objects (Timestamps) -->
         <div class="chart-container">
           <h2>Example 3: SparkLine with Array of Objects (Timestamps)</h2>
@@ -94,13 +91,11 @@
       ]'
             data-width="200"
             data-height="50"
-            data-filled="true"
             data-color-stroke="#ffc107"
             data-color-filled="#ffc107"
-            data-filled-opacity="0.3"
+            data-filled="0.1"
             data-stroke-width="2"
-            data-tooltip="true"
-            data-tooltip-position="bottom"
+            data-tooltip="top"
             data-aria-label="SparkLine Chart with Timestamps"
           ></figure>
           <p class="chart-description">
@@ -136,10 +131,9 @@
             data-height="50"
             data-color-stroke="#6f42c1"
             data-color-filled="#d6b8ff"
-            data-filled="true"
-            data-filled-opacity="0.5"
-            data-stroke-width="4"
-            data-tooltip="true"
+            data-filled="0.5"
+            data-stroke-width="3"
+            data-tooltip="top"
             data-aria-label="Custom Styled SparkLine Chart"
           ></figure>
           <p class="chart-description">
@@ -157,7 +151,7 @@
             data-height="100"
             data-color-stroke="#17a2b8"
             data-stroke-width="2"
-            data-tooltip="true"
+            data-tooltip="top"
             data-aria-label="Large SparkLine Chart"
           ></figure>
           <p class="chart-description">
@@ -167,7 +161,7 @@
 
         <!-- Example 7: SparkLine with Locale Formatting -->
         <div class="chart-container">
-          <h2>Example 7: SparkLine with Locale Formatting</h2>
+          <h2>Example 7: SparkLine with Locale Formatting (fr-FR)</h2>
           <figure
             class="sparkline"
             data-values='[
@@ -181,7 +175,7 @@
             data-height="50"
             data-color-stroke="#fd7e14"
             data-stroke-width="2"
-            data-tooltip="true"
+            data-tooltip="top"
             data-locale="fr-FR"
             data-aria-label="SparkLine Chart with French Locale"
           ></figure>
@@ -200,7 +194,7 @@
             data-height="50"
             data-color-stroke="#20c997"
             data-stroke-width="2"
-            data-tooltip="true"
+            data-tooltip="top"
             data-aria-label="SparkLine Chart from CSV Data"
           ></figure>
           <p class="chart-description">
@@ -218,8 +212,7 @@
             data-height="50"
             data-color-stroke="#e83e8c"
             data-stroke-width="2"
-            data-tooltip="true"
-            data-tooltip-position="bottom"
+            data-tooltip="bottom"
             data-aria-label="SparkLine Chart with Tooltip at Bottom"
           ></figure>
           <p class="chart-description">
