@@ -74,16 +74,16 @@ This will create a basic SparkLine chart using the specified data-values.
 
 ## 🔧 Data Attributes
 
-| Attribute             | Type     | Default                   | Description                                                                                 |
-|-----------------------|----------|---------------------------|---------------------------------------------------------------------------------------------|
-| `data-values`         | string   | `null` **(Required)**      | A comma-separated list of values or JSON data to plot.                                       |
-| `data-width`          | number   | `200`                     | The width of the chart in pixels.                                                            |
-| `data-height`         | number   | Proportional to width      | The height of the chart in pixels. Automatically calculated based on width, maintaining a proportional aspect ratio. |
-| `data-color-stroke`   | string   | `#8956ff`                 | The color of the chart line (stroke).                                                        |
-| `data-filled`         | number   | (none)                    | Defines the opacity of the fill area under the line if set. If not provided, no fill is displayed. |
-| `data-tooltip`        | string   | `top`                     | Tooltip position: "top" or "bottom". Tooltip is enabled if this attribute is set.            |
-| `data-aria-label`     | string   | `Simple SparkLine Chart`   | Accessible label for the chart.                                                              |
-| `data-locale`         | string   | User's locale              | The locale used for formatting dates in tooltips (if using timestamp data).                  |
+| Attribute           | Type   | Default                  | Description                                                                                                          |
+| ------------------- | ------ | ------------------------ | -------------------------------------------------------------------------------------------------------------------- |
+| `data-values`       | string | `null` **(Required)**    | A comma-separated list of values or JSON data to plot.                                                               |
+| `data-width`        | number | `200`                    | The width of the chart in pixels.                                                                                    |
+| `data-height`       | number | Proportional to width    | The height of the chart in pixels. Automatically calculated based on width, maintaining a proportional aspect ratio. |
+| `data-color-stroke` | string | `#8956ff`                | The color of the chart line (stroke).                                                                                |
+| `data-filled`       | number | (none)                   | Defines the opacity of the fill area under the line if set. If not provided, no fill is displayed.                   |
+| `data-tooltip`      | string | `top`                    | Tooltip position: "top" or "bottom". Tooltip is enabled if this attribute is set.                                    |
+| `data-aria-label`   | string | `Simple SparkLine Chart` | Accessible label for the chart.                                                                                      |
+| `data-locale`       | string | User's locale            | The locale used for formatting dates in tooltips (if using timestamp data).                                          |
 
 ## 🧑‍💻 API
 

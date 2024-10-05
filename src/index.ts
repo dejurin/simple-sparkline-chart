@@ -34,7 +34,10 @@ class SimpleSparkLineChart {
           return;
         }
       } catch (e) {
-        dataValues = valuesAttr.split(",").map(parseFloat).filter(Number.isFinite);
+        dataValues = valuesAttr
+          .split(",")
+          .map(parseFloat)
+          .filter(Number.isFinite);
       }
     } else {
       console.warn("Missing data-values attribute for element:", element);
@@ -47,16 +50,22 @@ class SimpleSparkLineChart {
     }
 
     const width = element.dataset.width ? parseInt(element.dataset.width) : 200;
-    const height = element.dataset.height 
-  ? parseInt(element.dataset.height) 
-  : Math.round(width * 0.2);
+    const height = element.dataset.height
+      ? parseInt(element.dataset.height)
+      : Math.round(width * 0.2);
 
-  const filled = element.dataset.filled !== undefined && element.dataset.filled !== "false";
-  const filledOpacity = filled ? parseFloat(element.dataset.filled || "0.2") : 0;
+    const filled =
+      element.dataset.filled !== undefined &&
+      element.dataset.filled !== "false";
+    const filledOpacity = filled
+      ? parseFloat(element.dataset.filled || "0.2")
+      : 0;
 
     const colorStroke = element.dataset.colorStroke || "#8956ff";
     const colorFilled = element.dataset.colorFilled || colorStroke;
-    const strokeWidth = element.dataset.strokeWidth ? parseFloat(element.dataset.strokeWidth) : 2;
+    const strokeWidth = element.dataset.strokeWidth
+      ? parseFloat(element.dataset.strokeWidth)
+      : 2;
 
     const ariaLabel = element.dataset.ariaLabel || "Simple SparkLine Chart";
 
@@ -81,7 +90,7 @@ class SimpleSparkLineChart {
       ariaLabel,
       showTooltip,
       tooltipPosition,
-      locale
+      locale,
     );
   }
 
@@ -100,7 +109,7 @@ class SimpleSparkLineChart {
     ariaLabel: string,
     showTooltip: boolean,
     tooltipPosition: string,
-    locale: string
+    locale: string,
   ): void {
     const svgNS = "http://www.w3.org/2000/svg";
 
@@ -126,7 +135,9 @@ class SimpleSparkLineChart {
     svg.setAttribute("preserveAspectRatio", "none");
 
     const offset = values.length > 1 ? adjustedWidth / (values.length - 1) : 0;
-    const linePoints: string[] = values.map((val, i) => `${(i * offset).toFixed(2)},${c(val).toFixed(2)}`);
+    const linePoints: string[] = values.map(
+      (val, i) => `${(i * offset).toFixed(2)},${c(val).toFixed(2)}`,
+    );
 
     if (filled) {
       const fillPathD = `${linePoints.map((p, i) => (i === 0 ? "M" + p : "L" + p)).join(" ")} L${adjustedWidth.toFixed(2)},${adjustedHeight.toFixed(2)} L0,${adjustedHeight.toFixed(2)} Z`;
@@ -171,7 +182,8 @@ class SimpleSparkLineChart {
       tooltip.style.borderRadius = "4px";
       tooltip.style.whiteSpace = "nowrap";
       tooltip.style.display = "none";
-      tooltip.style[tooltipPosition === "bottom" ? "top" : "bottom"] = `${adjustedHeight}px`;
+      tooltip.style[tooltipPosition === "bottom" ? "top" : "bottom"] =
+        `${adjustedHeight}px`;
 
       container.appendChild(tooltip);
 
@@ -212,7 +224,10 @@ class SimpleSparkLineChart {
 
       const handleMove = (event: MouseEvent | TouchEvent) => {
         const rect = svg.getBoundingClientRect();
-        const clientX = event instanceof MouseEvent ? event.clientX : event.touches[0].clientX;
+        const clientX =
+          event instanceof MouseEvent
+            ? event.clientX
+            : event.touches[0].clientX;
         const x = clientX - rect.left;
         const index = Math.round(x / offset);
         const clampedIndex = Math.max(0, Math.min(values.length - 1, index));
