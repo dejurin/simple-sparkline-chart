@@ -1,8 +1,14 @@
-📈 Simple SparkLine Chart
+# 📈 Simple SparkLine Chart
 
 A lightweight, customizable, and easy-to-use SparkLine chart library written in TypeScript.
 
-[DEMO](https://codepen.io/dejurin/pen/QWeELog) 👀
+## DEMO
+
+[CodePen](https://codepen.io/dejurin/pen/QWeELog) 👀
+
+[Production](https://currencyrate.today/) 👀
+
+## Library
 
 [NPMJS](https://www.npmjs.com/package/simple-sparkline-chart) 📦
 
@@ -162,7 +168,7 @@ To build the project locally:
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-💬 Feedback and Contributions
+## 💬 Feedback and Contributions
 
 Feel free to open an issue if you find a bug or have a feature request. Pull requests are welcome! 🙌
 
