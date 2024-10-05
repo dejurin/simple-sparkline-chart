@@ -1,6 +1,6 @@
 {
   "name": "simple-sparkline-chart",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "source": "src/index.ts",
   "main": "./dist/commonjs/index.js",
   "module": "./dist/esmodule/index.js",
@@ -55,6 +55,19 @@
   "bugs": {
     "url": "https://github.com/dejurin/simple-sparkline-chart/issues"
   },
+  "keywords": [
+    "sparkline",
+    "chart",
+    "data-visualization",
+    "line-chart",
+    "javascript",
+    "typescript",
+    "responsive-charts",
+    "svg-charts",
+    "spark",
+    "graph",
+    "npm-package"
+  ],
   "author": "https://github.com/dejurin",
   "license": "MIT",
   "description": "Simple SparkLine Chart",
