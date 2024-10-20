@@ -1,10 +1,16 @@
 {
   "name": "simple-sparkline-chart",
-  "version": "0.3.8",
+  "version": "0.3.9",
   "source": "src/index.ts",
   "main": "./dist/commonjs/index.js",
   "module": "./dist/esmodule/index.js",
   "types": "./dist/types.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/esmodule/index.js",
+      "require": "./dist/commonjs/index.js"
+    }
+  },
   "scripts": {
     "start": "parcel src/index.html",
     "build": "npm run format && npm run test && parcel build --no-cache && npm run build:types",
