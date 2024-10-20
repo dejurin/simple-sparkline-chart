@@ -1,6 +1,6 @@
 declare class SimpleSparkLineChart {
-    constructor(selector: string);
-    private createChart;
-    private makeChart;
+  constructor(selector: string);
+  private createChart;
+  private makeChart;
 }
 export default SimpleSparkLineChart;
