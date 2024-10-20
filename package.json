@@ -1,6 +1,6 @@
 {
   "name": "simple-sparkline-chart",
-  "version": "0.3.7",
+  "version": "0.3.8",
   "source": "src/index.ts",
   "main": "./dist/commonjs/index.js",
   "module": "./dist/esmodule/index.js",
@@ -68,6 +68,7 @@
     "graph",
     "npm-package"
   ],
+  "type": "module",
   "author": "https://github.com/dejurin",
   "license": "MIT",
   "description": "Simple SparkLine Chart with interactive tooltips, offering flexible customization options for effortless integration into any project.",
